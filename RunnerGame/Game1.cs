@@ -1,17 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace RunnerGame
 {
     public class Game1 : Game
     {
-        Texture2D playerTexture;
-        Vector2 playerPosition;
-        Texture2D roadTexture;
-        Vector2 roadPosition;
+        GameObject player;
+        GameObject road;
 
-        float playerSpeed;
+        List<GameObject> objects;
 
         // monogame stuff
         private GraphicsDeviceManager _graphics;
@@ -28,12 +29,16 @@ namespace RunnerGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            playerPosition = new Vector2(_graphics.PreferredBackBufferWidth / 4,
-                _graphics.PreferredBackBufferHeight / 2);
-            roadPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2,
-                _graphics.PreferredBackBufferHeight / 5);
+            player = new GameObject();
+            road = new GameObject();
+            objects = new List<GameObject> {player,road};
+            
+            player.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 4,
+                _graphics.PreferredBackBufferHeight / 2));
+            player.SetSpeed(200f);
 
-            playerSpeed = 100;
+            road.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 2,
+                _graphics.PreferredBackBufferHeight / 5));
 
             base.Initialize();
         }
@@ -43,8 +48,8 @@ namespace RunnerGame
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            playerTexture = Content.Load<Texture2D>("punk1");
-            roadTexture = Content.Load<Texture2D>("road");
+            player.SetTexture(Content.Load<Texture2D>("punk1"));
+            road.SetTexture(Content.Load<Texture2D>("road"));
 
         }
 
@@ -56,23 +61,26 @@ namespace RunnerGame
             // TODO: Add your update logic here
             var kstate = Keyboard.GetState();
 
-            // user key input: moves the ball at a constant speed no matter the framerate
+            // move the player when the user presses the keys
+            float gameTimeConstant = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (kstate.IsKeyDown(Keys.Up))
             {
-                playerPosition.Y -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                player.MoveUp(gameTimeConstant);
             }
             if (kstate.IsKeyDown(Keys.Down))
             {
-                playerPosition.Y += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                player.MoveDown(gameTimeConstant);
             }
             if (kstate.IsKeyDown(Keys.Left))
             {
-                playerPosition.X -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                player.MoveLeft(gameTimeConstant);
             }
             if (kstate.IsKeyDown(Keys.Right))
-            {   
-                playerPosition.X += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            {
+                player.MoveRight(gameTimeConstant);
             }
+
+            /*
 
             // make sure the player doesn't go off the screen
             if (playerPosition.X > _graphics.PreferredBackBufferWidth - playerTexture.Width / 2)
@@ -92,7 +100,7 @@ namespace RunnerGame
             {
                 playerPosition.Y = playerTexture.Height / 2;
             }
-
+            */
 
 
             base.Update(gameTime);
@@ -103,30 +111,25 @@ namespace RunnerGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
             _spriteBatch.Begin();
-            // draw player
-            _spriteBatch.Draw(
-                playerTexture,
-                playerPosition,
-                null,
-                Color.White,
-                0f,
-                new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
-                Vector2.One,
-                SpriteEffects.None,
-                0f);
-            // draw road
-            _spriteBatch.Draw(
-                roadTexture,
-                roadPosition,
-                null,
-                Color.White,
-                0f,
-                new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
-                Vector2.One,
-                SpriteEffects.None,
-                0f);
+            // draw everything in the objects list
+            foreach (GameObject obj in objects)
+            {
+                _spriteBatch.Draw(
+                    obj.GetTexture(),
+                    obj.GetPosition(),
+                    null,
+                    Color.White,
+                    0f,
+                    new Vector2(player.GetTexture().Width / 2, player.GetTexture().Height / 2),
+                    Vector2.One,
+                    SpriteEffects.None,
+                    0f);
+            }
+            
             _spriteBatch.End();
+            
 
             base.Draw(gameTime);
         }
