@@ -25,3 +25,4 @@ C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\obj\Debug\net6.0\Ru
 C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\obj\Debug\net6.0\ref\RunnerGame.dll
 C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\punk1.xnb
 C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\road.xnb
+C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\longRoad.xnb

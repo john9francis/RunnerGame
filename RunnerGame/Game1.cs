@@ -11,6 +11,7 @@ namespace RunnerGame
     {
         GameObject player;
         GameObject road;
+        GameObject test;
 
         List<GameObject> objects;
 
@@ -29,16 +30,29 @@ namespace RunnerGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            player = new GameObject();
+            player = new Player();
             road = new GameObject();
-            objects = new List<GameObject> {player,road};
+            test = new GameObject();
+            objects = new List<GameObject> {player,road,test};
             
+            // player settings
             player.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 4,
                 _graphics.PreferredBackBufferHeight / 2));
             player.SetSpeed(200f);
+            player.SetHitBoxHeight(200);
+            player.SetHitBoxWidth(50);
 
-            road.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 2,
-                _graphics.PreferredBackBufferHeight / 5));
+            // road settings
+            road.SetPosition(new Vector2(0,
+                _graphics.PreferredBackBufferHeight));
+            road.SetHitBoxHeight(250);
+            road.SetHitBoxWidth(10000);
+
+            // test
+            test.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth*3 / 4,
+                _graphics.PreferredBackBufferHeight / 2));
+            test.SetHitBoxHeight(200);
+            test.SetHitBoxWidth(50);
 
             base.Initialize();
         }
@@ -49,12 +63,15 @@ namespace RunnerGame
 
             // TODO: use this.Content to load your game content here
             player.SetTexture(Content.Load<Texture2D>("punk1"));
-            road.SetTexture(Content.Load<Texture2D>("road"));
+            road.SetTexture(Content.Load<Texture2D>("longRoad"));
+
+            test.SetTexture(Content.Load<Texture2D>("punk1"));
 
         }
 
         protected override void Update(GameTime gameTime)
         {
+            // exit if escape is pressed
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -80,27 +97,12 @@ namespace RunnerGame
                 player.MoveRight(gameTimeConstant);
             }
 
-            /*
+            // keep the player on the screen
+            player.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
 
-            // make sure the player doesn't go off the screen
-            if (playerPosition.X > _graphics.PreferredBackBufferWidth - playerTexture.Width / 2)
-            {
-                playerPosition.X = _graphics.PreferredBackBufferWidth - playerTexture.Width / 2;
-            }
-            else if (playerPosition.X < playerTexture.Width / 2)
-            {
-                playerPosition.X = playerTexture.Width / 2;
-            }
-
-            if (playerPosition.Y > _graphics.PreferredBackBufferHeight - playerTexture.Height / 2)
-            {
-                playerPosition.Y = _graphics.PreferredBackBufferHeight - playerTexture.Height / 2;
-            }
-            else if (playerPosition.Y < playerTexture.Height / 2)
-            {
-                playerPosition.Y = playerTexture.Height / 2;
-            }
-            */
+            // make sure the player doesn't go through road
+            player.DontGoThrough(road);
+            player.DontGoThrough(test);
 
 
             base.Update(gameTime);
