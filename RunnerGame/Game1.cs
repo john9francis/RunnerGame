@@ -11,8 +11,6 @@ namespace RunnerGame
     {
         GameObject player;
         GameObject road;
-        GameObject test;
-
         List<GameObject> objects;
 
         // monogame stuff
@@ -32,9 +30,8 @@ namespace RunnerGame
             // TODO: Add your initialization logic here
             player = new Player();
             road = new GameObject();
-            test = new GameObject();
-            objects = new List<GameObject> {player,road,test};
-            
+            objects = new List<GameObject> {player,road};
+
             // player settings
             player.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 4,
                 _graphics.PreferredBackBufferHeight / 2));
@@ -48,12 +45,6 @@ namespace RunnerGame
             road.SetHitBoxHeight(250);
             road.SetHitBoxWidth(10000);
 
-            // test
-            test.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth*3 / 4,
-                _graphics.PreferredBackBufferHeight / 2));
-            test.SetHitBoxHeight(200);
-            test.SetHitBoxWidth(50);
-
             base.Initialize();
         }
 
@@ -64,8 +55,6 @@ namespace RunnerGame
             // TODO: use this.Content to load your game content here
             player.SetTexture(Content.Load<Texture2D>("punk1"));
             road.SetTexture(Content.Load<Texture2D>("longRoad"));
-
-            test.SetTexture(Content.Load<Texture2D>("punk1"));
 
         }
 
@@ -80,14 +69,6 @@ namespace RunnerGame
 
             // move the player when the user presses the keys
             float gameTimeConstant = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (kstate.IsKeyDown(Keys.Up))
-            {
-                player.MoveUp(gameTimeConstant);
-            }
-            if (kstate.IsKeyDown(Keys.Down))
-            {
-                player.MoveDown(gameTimeConstant);
-            }
             if (kstate.IsKeyDown(Keys.Left))
             {
                 player.MoveLeft(gameTimeConstant);
@@ -96,14 +77,19 @@ namespace RunnerGame
             {
                 player.MoveRight(gameTimeConstant);
             }
+            if (kstate.IsKeyDown(Keys.Space))
+            {
+                player.Jump(gameTimeConstant);
+            }
 
             // keep the player on the screen
             player.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
 
             // make sure the player doesn't go through road
-            player.DontGoThrough(road);
-            player.DontGoThrough(test);
+            player.StayOnTopOf(road);
 
+            // update all the player stuff
+            player.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -131,8 +117,7 @@ namespace RunnerGame
             }
             
             _spriteBatch.End();
-            
-
+           
             base.Draw(gameTime);
         }
     }

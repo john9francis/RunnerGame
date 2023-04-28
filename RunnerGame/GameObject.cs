@@ -10,13 +10,22 @@ public class GameObject
 {
     private Texture2D _texture;
     private Vector2 _position;
+
+    private float _gravity = 500f;
+    private float _jumpStrength = 300f;
+
     private float _speed;
-    protected float _hitBoxHeight;
-    protected float _hitBoxWidth;
+    private float _hitBoxHeight;
+    private float _hitBoxWidth;
+
+    bool _hasJumped;
+
+    // physics
+    private Vector2 _velocity;
 
     public GameObject()
     {
-
+        _hasJumped = true;
     }
 
     // getters and setters
@@ -69,6 +78,15 @@ public class GameObject
     {
         return _hitBoxWidth;
     }
+
+    public void Update(GameTime gameTime)
+    {
+        float gameTimeConstant = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (_hasJumped)
+        {
+            ApplyPhysics(gameTimeConstant);
+        }
+    }
     
     // Movements:
     public void MoveLeft(float gameTimeConstant=1)
@@ -111,30 +129,59 @@ public class GameObject
         }
     }
 
-    public void DontGoThrough(GameObject otherObject)
+    public void StayOnTopOf(GameObject otherObject)
     {
-        // NOTE: NOT DONE!
+        // make sure the bottom hitbox of THIS object doesn't go through the top of the OTHER object
+        if (CheckIfTouching(otherObject))
+        {
+            _position.Y = otherObject.GetPosition().Y - otherObject.GetHitBoxHeight() / 2 - _hitBoxHeight / 2;
+            _hasJumped = false;
+        }
 
+    }
+
+    public bool CheckIfTouching(GameObject otherObject)
+    {
+        // returns true if the object is touching another object. 
         // define where the object hitbox is
-        float top = _position.Y - _hitBoxHeight/2;
-        float bottom = _position.Y + _hitBoxHeight/2;
-        float left = _position.X - _hitBoxWidth/2;
-        float right = _position.X + _hitBoxWidth/2;
+        float top = _position.Y - _hitBoxHeight / 2;
+        float bottom = _position.Y + _hitBoxHeight / 2;
+        float left = _position.X - _hitBoxWidth / 2;
+        float right = _position.X + _hitBoxWidth / 2;
 
         // define where the other object hitbox is
-        float otop = otherObject.GetPosition().Y - otherObject.GetHitBoxHeight()/2;
-        float obottom = otherObject.GetPosition().Y + otherObject.GetHitBoxHeight()/2;
-        float oleft = otherObject.GetPosition().X - otherObject.GetHitBoxWidth()/2;
-        float oright = otherObject.GetPosition().X + otherObject.GetHitBoxWidth()/2;
+        float otop = otherObject.GetPosition().Y - otherObject.GetHitBoxHeight() / 2;
+        float obottom = otherObject.GetPosition().Y + otherObject.GetHitBoxHeight() / 2;
+        float oleft = otherObject.GetPosition().X - otherObject.GetHitBoxWidth() / 2;
+        float oright = otherObject.GetPosition().X + otherObject.GetHitBoxWidth() / 2;
 
         // make sure the bottom hitbox of THIS object doesn't go through the top of the OTHER object
-        if (bottom > otop)
+        if (bottom > otop && top < obottom)
         {
-            if (_position.X < oleft && _position.X > oright)
+            if (right > oleft && left < oright)
             {
-                _position.Y = otop - _hitBoxHeight / 2;
+                return true;
             }
         }
 
+        return false;
+
+    }
+
+    public void ApplyPhysics(float gameTimeConstant)
+    {
+        // updates position and velocity based on gravity. (uses Euler's method)
+        _position.Y += _velocity.Y * gameTimeConstant;
+        _velocity.Y += _gravity * gameTimeConstant;
+    }
+
+    public void Jump(float gameTimeConstant)
+    {
+        if (_hasJumped == false)
+        {
+            _position.Y -= 10f;
+            _velocity.Y = -_jumpStrength;
+            _hasJumped = true;
+        } 
     }
 }
