@@ -9,7 +9,7 @@ namespace RunnerGame
 {
     public class Game1 : Game
     {
-        GameObject player;
+        Player player;
         GameObject road;
         List<GameObject> objects;
 
@@ -23,6 +23,11 @@ namespace RunnerGame
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            // set window size:
+            _graphics.PreferredBackBufferWidth = 1200;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferHeight = 600;   // set this value to the desired height of your window
+            _graphics.ApplyChanges();
         }
 
         protected override void Initialize()
@@ -67,27 +72,12 @@ namespace RunnerGame
             // TODO: Add your update logic here
             var kstate = Keyboard.GetState();
 
-            // move the player when the user presses the keys
-            float gameTimeConstant = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (kstate.IsKeyDown(Keys.Left))
-            {
-                player.MoveLeft(gameTimeConstant);
-            }
-            if (kstate.IsKeyDown(Keys.Right))
-            {
-                player.MoveRight(gameTimeConstant);
-            }
-            if (kstate.IsKeyDown(Keys.Space))
-            {
-                player.Jump(gameTimeConstant);
-            }
-
             // keep the player on the screen
             player.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
-
+            
             // make sure the player doesn't go through road
             player.StayOnTopOf(road);
-
+            
             // update all the player stuff
             player.Update(gameTime);
 

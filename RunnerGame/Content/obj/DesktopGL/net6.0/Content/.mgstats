@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/longRoad.png","C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/bin/DesktopGL/Content/longRoad.xnb","TextureProcessor","Texture2DContent",17868,4000085,0.3523188
+"C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/obstacle.png","C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/bin/DesktopGL/Content/obstacle.xnb","TextureProcessor","Texture2DContent",3789,230485,0.2089753
 "C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/punk1.png","C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/bin/DesktopGL/Content/punk1.xnb","TextureProcessor","Texture2DContent",2862,230485,0.1934697
 "C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/road.png","C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/bin/DesktopGL/Content/road.xnb","TextureProcessor","Texture2DContent",1671,230485,0.2150201

@@ -12,16 +12,16 @@ public class GameObject
     private Vector2 _position;
 
     private float _gravity = 500f;
-    private float _jumpStrength = 300f;
+    private float _jumpStrength = 400f;
 
     private float _speed;
     private float _hitBoxHeight;
     private float _hitBoxWidth;
 
-    bool _hasJumped;
+    protected bool _hasJumped;
 
     // physics
-    private Vector2 _velocity;
+    protected Vector2 _velocity;
 
     public GameObject()
     {
@@ -79,15 +79,6 @@ public class GameObject
         return _hitBoxWidth;
     }
 
-    public void Update(GameTime gameTime)
-    {
-        float gameTimeConstant = (float)gameTime.ElapsedGameTime.TotalSeconds;
-        if (_hasJumped)
-        {
-            ApplyPhysics(gameTimeConstant);
-        }
-    }
-    
     // Movements:
     public void MoveLeft(float gameTimeConstant=1)
     {
@@ -182,6 +173,7 @@ public class GameObject
             _position.Y -= 10f;
             _velocity.Y = -_jumpStrength;
             _hasJumped = true;
-        } 
+        }
     }
+
 }

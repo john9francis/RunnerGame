@@ -1,30 +1,25 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
+This is my simple game "Punk Run." Dodge the obstacles by jumping with the spacebar and moving around with the left and right keys. 
 
-{Provide a description the game that you wrote. Describe how to play your game.}
-
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the game being played and a walkthrough of the code.}
+This is a simple runner game coded using the MonoGame framework. I created this game to demonstrate how MonoGame works for a simple video game.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+I used the IDE Visual Studio to code this project with the MonoGame 2D template. 
 
-{Describe the programming language that you used and any libraries.}
+I coded this project in C# and used the MonoGame framework. Monogame is a video game development framework that builds on Microsoft XNA 4.
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
 * [Getting started with MonoGame](https://docs.monogame.net/articles/getting_started/0_getting_started.html)
-* [Web Site Name](http://url.link.goes.here)
+* [Helpful monogame tutorial videos](https://www.youtube.com/@Oyyou)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
+{List of things I need to fix, improve, and add in the future.}
 * Item 1
 * Item 2
 * Item 3

@@ -26,3 +26,4 @@ C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\obj\Debug\net6.0\re
 C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\punk1.xnb
 C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\road.xnb
 C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\longRoad.xnb
+C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\obstacle.xnb
