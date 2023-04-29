@@ -33,6 +33,13 @@ namespace RunnerGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            // set window size:
+            _graphics.PreferredBackBufferWidth = 1200;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferHeight = 600;   // set this value to the desired height of your window
+            _graphics.ApplyChanges();
+
+            // create objects
             player = new Player();
             road = new GameObject();
             obstacle = new Obstacle();
@@ -57,10 +64,7 @@ namespace RunnerGame
             // add all objects to the objects list
             objects = new List<GameObject> { player, road };
 
-            // set window size:
-            _graphics.PreferredBackBufferWidth = 1200;  // set this value to the desired width of your window
-            _graphics.PreferredBackBufferHeight = 600;   // set this value to the desired height of your window
-            _graphics.ApplyChanges();
+            
 
             base.Initialize();
         }

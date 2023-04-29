@@ -8,11 +8,16 @@ using System.Linq.Expressions;
 
 public class Obstacle : GameObject
 {
+    // this object is going to use rectangles for the hitbox. 
     private Rectangle _hitboxRectangle;
-	// this object is going to use rectangles for the hitbox. 
 	public Obstacle()
 	{
-        _hitboxRectangle = new Rectangle((int)GetPosition().X,(int)GetPosition().Y,20,20);
+        // generating the hitboxRectangle
+        int width = 60;
+        int height = 60;
+        int x = (int)GetPosition().X - width;
+        int y = (int)GetPosition().Y - height;
+        _hitboxRectangle = new Rectangle(x,y,width,height);
 	}
 
 	public void Update(GameTime gameTime)
@@ -39,9 +44,6 @@ public class Obstacle : GameObject
             MoveDown(gameTimeConstant);
         }
 
-        // make sure the hitbox rectangle follows the player.
-        _hitboxRectangle.X = (int)_position.X;
-        _hitboxRectangle.Y = (int)_position.Y;
     }
 
     public void Draw(SpriteBatch spriteBatch)
@@ -53,7 +55,7 @@ public class Obstacle : GameObject
                     null,
                     Color.White,
                     0f,
-                    new Vector2(0,0),
+                    new Vector2(GetTexture().Width/2, GetTexture().Height/2),
                     Vector2.One,
                     SpriteEffects.None,
                     0f);
