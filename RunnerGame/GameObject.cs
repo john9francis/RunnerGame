@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 public class GameObject
 {
     private Texture2D _texture;
-    private Vector2 _position;
+    protected Vector2 _position;
 
     private float _gravity = 500f;
     private float _jumpStrength = 400f;
@@ -26,6 +26,7 @@ public class GameObject
     public GameObject()
     {
         _hasJumped = true;
+        _speed = 200f;
     }
 
     // getters and setters

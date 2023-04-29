@@ -27,10 +27,7 @@ namespace RunnerGame
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            // set window size:
-            _graphics.PreferredBackBufferWidth = 1200;  // set this value to the desired width of your window
-            _graphics.PreferredBackBufferHeight = 600;   // set this value to the desired height of your window
-            _graphics.ApplyChanges();
+            
         }
 
         protected override void Initialize()
@@ -39,7 +36,6 @@ namespace RunnerGame
             player = new Player();
             road = new GameObject();
             obstacle = new Obstacle();
-            objects = new List<GameObject> {player,road,obstacle};
 
             // player settings
             player.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 4,
@@ -50,13 +46,21 @@ namespace RunnerGame
 
             // road settings
             road.SetPosition(new Vector2(0,
-                _graphics.PreferredBackBufferHeight));
+                _graphics.PreferredBackBufferHeight*3/4));
             road.SetHitBoxHeight(250);
             road.SetHitBoxWidth(10000);
 
             // obstacle settings
-            obstacle.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth,
-                _graphics.PreferredBackBufferHeight *3 / 4));
+            obstacle.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth * 3 / 4,
+                _graphics.PreferredBackBufferHeight / 2));  
+
+            // add all objects to the objects list
+            objects = new List<GameObject> { player, road };
+
+            // set window size:
+            _graphics.PreferredBackBufferWidth = 1200;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferHeight = 600;   // set this value to the desired height of your window
+            _graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -83,12 +87,18 @@ namespace RunnerGame
 
             // keep the player on the screen
             player.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
+
+            // keep obstacle on the screen
+            obstacle.KeepOnScreen1(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
             
             // make sure the player doesn't go through road
             player.StayOnTopOf(road);
             
             // update all the player stuff
             player.Update(gameTime);
+
+            // update obstacle
+            obstacle.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -109,13 +119,17 @@ namespace RunnerGame
                     null,
                     Color.White,
                     0f,
-                    new Vector2(player.GetTexture().Width / 2, player.GetTexture().Height / 2),
+                    //new Vector2(obj.GetTexture().Width / 2, obj.GetTexture().Height / 2),
+                    new Vector2(0,0),
                     Vector2.One,
                     SpriteEffects.None,
                     0f);
             }
             
             _spriteBatch.End();
+
+            // draw obstacle
+            obstacle.Draw(_spriteBatch);
            
             base.Draw(gameTime);
         }
