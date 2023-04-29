@@ -10,11 +10,9 @@ namespace RunnerGame
     public class Game1 : Game
     {
         Player player;
-        GameObject road;
+        Road road;
         Obstacle obstacle;
         List<GameObject> objects;
-
-        // test test test
 
         // monogame stuff
         private GraphicsDeviceManager _graphics;
@@ -41,28 +39,34 @@ namespace RunnerGame
 
             // create objects
             player = new Player();
-            road = new GameObject();
+            road = new Road();
             obstacle = new Obstacle();
 
             // player settings
             player.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 4,
-                _graphics.PreferredBackBufferHeight / 2));
+                _graphics.PreferredBackBufferHeight / 4));
             player.SetSpeed(200f);
-            player.SetHitBoxHeight(200);
-            player.SetHitBoxWidth(50);
+            player.SetHitbox(60, 200);
+            //player.SetHitBoxHeight(200);
+            //player.SetHitBoxWidth(50);
 
             // road settings
-            road.SetPosition(new Vector2(0,
-                _graphics.PreferredBackBufferHeight*3/4));
-            road.SetHitBoxHeight(250);
-            road.SetHitBoxWidth(10000);
+            road.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 2,
+                _graphics.PreferredBackBufferHeight * 4 / 5));
+
+            //road.SetHitbox((int)_graphics.PreferredBackBufferWidth, 100, 0, _graphics.PreferredBackBufferHeight *3/4);
+            //road.SetHitBoxHeight(250);
+            //road.SetHitBoxWidth(10000);
 
             // obstacle settings
             obstacle.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth * 3 / 4,
                 _graphics.PreferredBackBufferHeight / 2));  
 
             // add all objects to the objects list
-            objects = new List<GameObject> { player, road };
+            objects = new List<GameObject>();
+            objects.Add(player);
+            objects.Add(obstacle);
+            objects.Add(road);
 
             
 
@@ -75,8 +79,9 @@ namespace RunnerGame
 
             // TODO: use this.Content to load your game content here
             player.SetTexture(Content.Load<Texture2D>("punk1"));
-            road.SetTexture(Content.Load<Texture2D>("longRoad"));
             obstacle.SetTexture(Content.Load<Texture2D>("obstacle (1)"));
+            road.SetTexture(Content.Load<Texture2D>("longRoad"));
+
 
         }
 
@@ -93,16 +98,26 @@ namespace RunnerGame
             player.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
 
             // keep obstacle on the screen
-            obstacle.KeepOnScreen1(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
+            obstacle.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
             
             // make sure the player doesn't go through road
-            player.StayOnTopOf(road);
+            //player.StayOnTopOf(road);
             
             // update all the player stuff
             player.Update(gameTime);
 
             // update obstacle
             obstacle.Update(gameTime);
+
+            // trying to get player hitting road to work:
+            if (player.CheckIfTouching(road))
+            {
+                Exit();
+            }
+            if (player.CheckIfTouching(obstacle))
+            {
+                Exit();
+            }
 
             base.Update(gameTime);
         }
@@ -113,28 +128,31 @@ namespace RunnerGame
 
             // TODO: Add your drawing code here
 
-            _spriteBatch.Begin();
-            // draw everything in the objects list
+            //_spriteBatch.Begin();
+            //// draw everything in the objects list
+            //foreach (GameObject obj in objects)
+            //{
+            //    _spriteBatch.Draw(
+            //        obj.GetTexture(),
+            //        obj.GetPosition(),
+            //        null,
+            //        Color.White,
+            //        0f,
+            //        //new Vector2(obj.GetTexture().Width / 2, obj.GetTexture().Height / 2),
+            //        new Vector2(0,0),
+            //        Vector2.One,
+            //        SpriteEffects.None,
+            //        0f);
+            //}
+            //
+            //_spriteBatch.End();
+            
+            // draw each object
             foreach (GameObject obj in objects)
             {
-                _spriteBatch.Draw(
-                    obj.GetTexture(),
-                    obj.GetPosition(),
-                    null,
-                    Color.White,
-                    0f,
-                    //new Vector2(obj.GetTexture().Width / 2, obj.GetTexture().Height / 2),
-                    new Vector2(0,0),
-                    Vector2.One,
-                    SpriteEffects.None,
-                    0f);
+                obj.Draw(_spriteBatch);
             }
-            
-            _spriteBatch.End();
 
-            // draw obstacle
-            obstacle.Draw(_spriteBatch);
-           
             base.Draw(gameTime);
         }
     }

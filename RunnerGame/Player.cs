@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 
 
-public class Player : GameObject
+public class Player : RectangleObject
 {
 
     public Player()
@@ -20,7 +20,7 @@ public class Player : GameObject
         float gameTimeConstant = (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (_hasJumped)
         {
-            ApplyPhysics(gameTimeConstant);
+            //ApplyPhysics(gameTimeConstant);
         }
 
         var kstate = Keyboard.GetState();
@@ -34,9 +34,17 @@ public class Player : GameObject
         {
             MoveRight(gameTimeConstant);
         }
+        if (kstate.IsKeyDown(Keys.Up))
+        {
+            MoveUp(gameTimeConstant);
+        }
+        if (kstate.IsKeyDown(Keys.Down))
+        {
+            MoveDown(gameTimeConstant);
+        }
         if (kstate.IsKeyDown(Keys.Space))
         {
-            Jump(gameTimeConstant);
+            //Jump(gameTimeConstant);
         }
     }
 

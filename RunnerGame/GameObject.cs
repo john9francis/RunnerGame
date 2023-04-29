@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-public class GameObject
+public abstract class GameObject
 {
     private Texture2D _texture;
     protected Vector2 _position;
@@ -55,6 +55,8 @@ public class GameObject
         _hitBoxWidth = hitBoxWidth;
     }
 
+    public abstract Rectangle GetHitbox();
+
     public Texture2D GetTexture()
     {
         return _texture;
@@ -98,41 +100,23 @@ public class GameObject
         _position.Y += _speed * gameTimeConstant;
     }
 
-    // todo: create colission detection.
-    public void KeepOnScreen(float backBufferWidth, float backBufferHeight)
+    public void Draw(SpriteBatch spriteBatch)
     {
-        // make sure the player doesn't go off the screen
-        if (_position.X > backBufferWidth - _hitBoxWidth / 2)
-        {
-            _position.X = backBufferWidth - _hitBoxWidth / 2;
-        }
-        else if (_position.X < _hitBoxWidth / 2)
-        {
-            _position.X = _hitBoxWidth / 2;
-        }
-
-        if (_position.Y > backBufferHeight - _hitBoxHeight / 2)
-        {
-            _position.Y = backBufferHeight - _hitBoxHeight / 2;
-        }
-        else if (_position.Y < _hitBoxHeight / 2)
-        {
-            _position.Y = _hitBoxHeight / 2;
-        }
+        spriteBatch.Begin();
+        spriteBatch.Draw(
+                    GetTexture(),
+                    GetPosition(),
+                    null,
+                    Color.White,
+                    0f,
+                    new Vector2(GetTexture().Width / 2, GetTexture().Height / 2),
+                    Vector2.One,
+                    SpriteEffects.None,
+                    0f);
+        spriteBatch.End();
     }
 
-    public void StayOnTopOf(GameObject otherObject)
-    {
-        // make sure the bottom hitbox of THIS object doesn't go through the top of the OTHER object
-        if (CheckIfTouching(otherObject))
-        {
-            _position.Y = otherObject.GetPosition().Y - otherObject.GetHitBoxHeight() / 2 - _hitBoxHeight / 2;
-            _hasJumped = false;
-        }
-
-    }
-
-    public bool CheckIfTouching(GameObject otherObject)
+    public bool CheckIfTouching1(GameObject otherObject)
     {
         // returns true if the object is touching another object. 
         // define where the object hitbox is
@@ -159,6 +143,7 @@ public class GameObject
         return false;
 
     }
+
 
     public void ApplyPhysics(float gameTimeConstant)
     {
