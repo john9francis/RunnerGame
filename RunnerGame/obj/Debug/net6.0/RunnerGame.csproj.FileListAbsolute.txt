@@ -57,3 +57,4 @@ C:\Users\john9\OneDrive\Desktop\RunnerGame\RunnerGame\obj\Debug\net6.0\refint\Ru
 C:\Users\john9\OneDrive\Desktop\RunnerGame\RunnerGame\obj\Debug\net6.0\RunnerGame.pdb
 C:\Users\john9\OneDrive\Desktop\RunnerGame\RunnerGame\obj\Debug\net6.0\RunnerGame.genruntimeconfig.cache
 C:\Users\john9\OneDrive\Desktop\RunnerGame\RunnerGame\obj\Debug\net6.0\ref\RunnerGame.dll
+C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\obstacle (1).xnb

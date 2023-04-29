@@ -11,6 +11,7 @@ namespace RunnerGame
     {
         Player player;
         GameObject road;
+        Obstacle obstacle;
         List<GameObject> objects;
 
         // test test test
@@ -37,7 +38,8 @@ namespace RunnerGame
             // TODO: Add your initialization logic here
             player = new Player();
             road = new GameObject();
-            objects = new List<GameObject> {player,road};
+            obstacle = new Obstacle();
+            objects = new List<GameObject> {player,road,obstacle};
 
             // player settings
             player.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 4,
@@ -52,6 +54,10 @@ namespace RunnerGame
             road.SetHitBoxHeight(250);
             road.SetHitBoxWidth(10000);
 
+            // obstacle settings
+            obstacle.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth,
+                _graphics.PreferredBackBufferHeight *3 / 4));
+
             base.Initialize();
         }
 
@@ -62,6 +68,7 @@ namespace RunnerGame
             // TODO: use this.Content to load your game content here
             player.SetTexture(Content.Load<Texture2D>("punk1"));
             road.SetTexture(Content.Load<Texture2D>("longRoad"));
+            obstacle.SetTexture(Content.Load<Texture2D>("obstacle (1)"));
 
         }
 
