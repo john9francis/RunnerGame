@@ -16,6 +16,7 @@ I coded this project in C# and used the MonoGame framework. Monogame is a video 
 
 * [Getting started with MonoGame](https://docs.monogame.net/articles/getting_started/0_getting_started.html)
 * [Helpful monogame tutorial videos](https://www.youtube.com/@Oyyou)
+* [Help with hitboxes and collisions](https://www.industrian.net/tutorials/rectangles/)
 
 # Future Work
 
