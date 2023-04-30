@@ -46,7 +46,6 @@ namespace RunnerGame
             player.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 4,
                 _graphics.PreferredBackBufferHeight / 4));
             player.SetSpeed(200f);
-            player.SetHitbox(60, 200);
             //player.SetHitBoxHeight(200);
             //player.SetHitBoxWidth(50);
 
@@ -110,14 +109,8 @@ namespace RunnerGame
             obstacle.Update(gameTime);
 
             // trying to get player hitting road to work:
-            if (player.CheckIfTouching(road))
-            {
-                Exit();
-            }
             if (player.CheckIfTouching(obstacle))
-            {
                 Exit();
-            }
 
             base.Update(gameTime);
         }

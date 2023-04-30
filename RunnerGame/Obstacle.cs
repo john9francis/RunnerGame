@@ -11,8 +11,10 @@ public class Obstacle : RectangleObject
     
 	public Obstacle()
 	{
-        
-	}
+        // generating the hitboxRectangle
+        //SetHitbox(_hitboxWidth, _hitboxHeight);
+         // for some reason if we initialize the hitbox before it moves, it crashes...
+    }
 
 	public void Update(GameTime gameTime)
 	{

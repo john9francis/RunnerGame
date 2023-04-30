@@ -11,5 +11,7 @@ public class Road : RectangleObject
 {
 	public Road()
 	{
-	}
+        // generating the hitboxRectangle
+        SetHitbox(_hitboxWidth, _hitboxHeight);
+    }
 }

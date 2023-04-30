@@ -10,11 +10,12 @@ public class RectangleObject : GameObject
 {
     // this object is going to use rectangles for the hitbox. 
     private Rectangle _hitboxRectangle;
+    protected int _hitboxWidth = 60;
+    protected int _hitboxHeight = 60;
 
     public RectangleObject()
 	{
-        // generating the hitboxRectangle
-        SetHitbox(60,60);
+        
         
     }
 
@@ -36,39 +37,53 @@ public class RectangleObject : GameObject
         return _hitboxRectangle; 
     }
 
+    // we need to move the rectangle hitbox as the texture moves.
+    public override void MoveUp(float gameTimeConstant)
+    {
+        base.MoveUp(gameTimeConstant);
+        SetHitbox(_hitboxWidth, _hitboxHeight);
+    }
+
+    public override void MoveDown(float gameTimeConstant)
+    {
+        base.MoveDown(gameTimeConstant);
+        SetHitbox(_hitboxWidth, _hitboxHeight);
+
+    }
+
+    public override void MoveLeft(float gameTimeConstant)
+    {
+        base.MoveLeft(gameTimeConstant);
+        SetHitbox(_hitboxWidth, _hitboxHeight);
+
+    }
+
+    public override void MoveRight(float gameTimeConstant)
+    {
+        base.MoveRight(gameTimeConstant);
+        SetHitbox(_hitboxWidth, _hitboxHeight);
+
+    }
+
+
     public void KeepOnScreen(float backBufferWidth, float backBufferHeight)
     {
-        //if (_hitboxRectangle.Left < 0)
         if (_position.X < _hitboxRectangle.Width / 2)
         {
             _position.X = _hitboxRectangle.Width / 2;
         }
-        //if (_hitboxRectangle.Right > backBufferWidth)
         if (_position.X > backBufferWidth - _hitboxRectangle.Width / 2)
         {
             _position.X = backBufferWidth - _hitboxRectangle.Width / 2;
         }
-        // if (_hitboxRectangle.Top < 0)
         if (_position.Y < _hitboxRectangle.Height / 2)
         {
             _position.Y = _hitboxRectangle.Height / 2;
         }
-        //if (_hitboxRectangle.Bottom > backBufferHeight)
         if (_position.Y > backBufferHeight - _hitboxRectangle.Height / 2)
         {
             _position.Y = backBufferHeight - _hitboxRectangle.Height / 2;
         }
-    }
-
-    public void StayOnTopOf1(GameObject otherObject)
-    {
-        // make sure the bottom hitbox of THIS object doesn't go through the top of the OTHER object
-        if (CheckIfTouching(otherObject))
-        {
-            _position.Y = otherObject.GetPosition().Y - otherObject.GetHitBoxHeight() / 2 - GetHitBoxHeight() / 2;
-            _hasJumped = false;
-        }
-
     }
 
     public void StayOnTopOf(GameObject otherObject)

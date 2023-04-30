@@ -6,13 +6,13 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-
 public class Player : RectangleObject
 {
 
     public Player()
     {
-
+        // generating the hitboxRectangle
+        SetHitbox(_hitboxWidth, _hitboxHeight);
     }
 
     public void Update(GameTime gameTime)
