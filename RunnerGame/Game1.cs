@@ -11,9 +11,16 @@ namespace RunnerGame
     {
         // test commit
         Player player;
-        GameObject road;
-        Obstacle obstacle;
+        Road road;
+        //Obstacle obstacle;
         List<GameObject> objects;
+        List<GameObject> movingObjects;
+        List<Obstacle> obstacles;
+
+        private float _time;
+        private int _count = 2;
+
+        Texture2D obstacleTexture;
 
         // test test test
 
@@ -38,26 +45,26 @@ namespace RunnerGame
         {
             // TODO: Add your initialization logic here
             player = new Player();
-            road = new GameObject();
-            obstacle = new Obstacle();
-            objects = new List<GameObject> {player,road,obstacle};
+            road = new Road();
 
             // player settings
             player.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth / 4,
                 _graphics.PreferredBackBufferHeight / 2));
-            player.SetSpeed(200f);
-            player.SetHitBoxHeight(200);
             player.SetHitBoxWidth(50);
+            player.SetHitBoxHeight(200);
 
             // road settings
             road.SetPosition(new Vector2(0,
-                _graphics.PreferredBackBufferHeight));
-            road.SetHitBoxHeight(250);
+                _graphics.PreferredBackBufferHeight *4/5));
             road.SetHitBoxWidth(10000);
+            road.SetHitBoxHeight(100);
 
-            // obstacle settings
-            obstacle.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth,
-                _graphics.PreferredBackBufferHeight *3 / 4));
+            // lists of stuff
+            objects = new List<GameObject> {player,road};
+            movingObjects = new List<GameObject> { player };
+            obstacles = new List<Obstacle>();
+
+            _time = 1f;
 
             base.Initialize();
         }
@@ -69,7 +76,8 @@ namespace RunnerGame
             // TODO: use this.Content to load your game content here
             player.SetTexture(Content.Load<Texture2D>("punk1"));
             road.SetTexture(Content.Load<Texture2D>("longRoad"));
-            obstacle.SetTexture(Content.Load<Texture2D>("obstacle (1)"));
+            obstacleTexture = Content.Load<Texture2D>("obstacle (1)");
+
 
         }
 
@@ -80,7 +88,6 @@ namespace RunnerGame
                 Exit();
 
             // TODO: Add your update logic here
-            var kstate = Keyboard.GetState();
 
             // keep the player on the screen
             player.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
@@ -88,8 +95,44 @@ namespace RunnerGame
             // make sure the player doesn't go through road
             player.StayOnTopOf(road);
             
-            // update all the player stuff
-            player.Update(gameTime);
+            // update all the moving objects
+            foreach (GameObject obj in movingObjects)
+            {
+                obj.Update(gameTime);
+            }
+
+            foreach (Obstacle obj in obstacles)
+            {
+                obj.Update(gameTime);
+            }
+
+            // kill player if hits obstacle
+            //if (player.CheckIfTouching(obstacle))
+            //    Exit();
+
+            // get time:
+            //_time = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            _time++;
+
+            // on each 2 seconds, generate obstacle:
+            if (_time > _count)
+            {
+                //Obstacle obstacle = new Obstacle();
+                //obstacle.SetPosition(new Vector2(_graphics.PreferredBackBufferWidth,
+                //_graphics.PreferredBackBufferHeight * 3 / 5));
+                //obstacle.SetHitBoxWidth(60);
+                //obstacle.SetHitBoxHeight(60);
+                //obstacle.SetTexture(obstacleTexture);
+
+                obstacles.Add(new Obstacle(new Vector2(_graphics.PreferredBackBufferWidth,_graphics.PreferredBackBufferHeight * 3 / 5), 60f, 60f,obstacleTexture));
+
+                _count += 100;
+            }
+            foreach (Obstacle o in obstacles)
+            {
+                if (player.CheckIfTouching(o))
+                    Exit();
+            }
 
             base.Update(gameTime);
         }
@@ -100,23 +143,14 @@ namespace RunnerGame
 
             // TODO: Add your drawing code here
 
-            _spriteBatch.Begin();
-            // draw everything in the objects list
             foreach (GameObject obj in objects)
             {
-                _spriteBatch.Draw(
-                    obj.GetTexture(),
-                    obj.GetPosition(),
-                    null,
-                    Color.White,
-                    0f,
-                    new Vector2(player.GetTexture().Width / 2, player.GetTexture().Height / 2),
-                    Vector2.One,
-                    SpriteEffects.None,
-                    0f);
+                obj.Draw(_spriteBatch);
             }
-            
-            _spriteBatch.End();
+            foreach (Obstacle obj in obstacles)
+            {
+                obj.Draw(_spriteBatch);
+            }
            
             base.Draw(gameTime);
         }

@@ -8,8 +8,20 @@ using System.Linq.Expressions;
 
 public class Obstacle : GameObject
 {
-	// this object is going to use rectangles for the hitbox. 
-	public Obstacle()
+	//public Obstacle() { }
+	public Obstacle(Vector2 position,float hitboxWidth,float hitboxHeight,Texture2D texture)
 	{
+		SetPosition(position);
+		SetHitBoxWidth(hitboxWidth);
+		SetHitBoxHeight(hitboxHeight);
+		SetTexture(texture);
 	}
+
+	public override void Update(GameTime gameTime)
+	{
+        float gameTimeConstant = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        
+        MoveLeft(gameTimeConstant);
+
+    }
 }

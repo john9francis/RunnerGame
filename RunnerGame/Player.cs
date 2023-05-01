@@ -15,7 +15,7 @@ public class Player : GameObject
 
     }
 
-    public void Update(GameTime gameTime)
+    public override void Update(GameTime gameTime)
     {
         float gameTimeConstant = (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (_hasJumped)
@@ -26,11 +26,11 @@ public class Player : GameObject
         var kstate = Keyboard.GetState();
 
         // move the player when the user presses the keys
-        if (kstate.IsKeyDown(Keys.Left))
+        if (kstate.IsKeyDown(Keys.A))
         {
             MoveLeft(gameTimeConstant);
         }
-        if (kstate.IsKeyDown(Keys.Right))
+        if (kstate.IsKeyDown(Keys.D))
         {
             MoveRight(gameTimeConstant);
         }

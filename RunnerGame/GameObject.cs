@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-public class GameObject
+public abstract class GameObject
 {
     private Texture2D _texture;
     private Vector2 _position;
@@ -26,7 +26,11 @@ public class GameObject
     public GameObject()
     {
         _hasJumped = true;
+        SetSpeed(200f);
     }
+
+    // virtual methods:
+    public abstract void Update(GameTime gameTime);
 
     // getters and setters
     public void SetTexture(Texture2D texture)
@@ -77,6 +81,25 @@ public class GameObject
     public float GetHitBoxWidth()
     {
         return _hitBoxWidth;
+    }
+
+    public void Draw(SpriteBatch spriteBatch)
+    {
+        spriteBatch.Begin();
+        // draw everything in the objects list
+        
+        spriteBatch.Draw(
+            GetTexture(),
+            GetPosition(),
+            null,
+            Color.White,
+            0f,
+            new Vector2(GetTexture().Width / 2, GetTexture().Height / 2),
+            Vector2.One,
+            SpriteEffects.None,
+            0f);
+
+        spriteBatch.End();
     }
 
     // Movements:
