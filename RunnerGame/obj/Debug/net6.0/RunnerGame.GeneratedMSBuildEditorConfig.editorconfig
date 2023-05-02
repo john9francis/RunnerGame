@@ -8,8 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RunnerGame
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\john9\OneDrive\Desktop\CSE310\branch_nonRectangleHitboxes\RunnerGame\RunnerGame\
-=======
-build_property.ProjectDir = C:\Users\john9\OneDrive\Desktop\RunnerGame(old)\RunnerGame\RunnerGame\
->>>>>>> main
