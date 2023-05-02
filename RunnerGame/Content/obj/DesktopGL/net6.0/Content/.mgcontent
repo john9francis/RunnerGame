@@ -4,10 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/john9/OneDrive/Desktop/CSE310/branch_nonRectangleHitboxes/RunnerGame/RunnerGame/Content/longRoad.png</File>
-    <File>C:/Users/john9/OneDrive/Desktop/CSE310/branch_nonRectangleHitboxes/RunnerGame/RunnerGame/Content/obstacle.png</File>
-    <File>C:/Users/john9/OneDrive/Desktop/CSE310/branch_nonRectangleHitboxes/RunnerGame/RunnerGame/Content/punk1.png</File>
-    <File>C:/Users/john9/OneDrive/Desktop/CSE310/branch_nonRectangleHitboxes/RunnerGame/RunnerGame/Content/road.png</File>
+    <File>C:/Users/john9/OneDrive/Desktop/finalRepo/RunnerGame/Content/longRoad.png</File>
+    <File>C:/Users/john9/OneDrive/Desktop/finalRepo/RunnerGame/Content/obstacle.png</File>
+    <File>C:/Users/john9/OneDrive/Desktop/finalRepo/RunnerGame/Content/punk1.png</File>
+    <File>C:/Users/john9/OneDrive/Desktop/finalRepo/RunnerGame/Content/road.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
