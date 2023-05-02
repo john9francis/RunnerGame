@@ -35,15 +35,19 @@ namespace RunnerGame
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            // set window size:
-            _graphics.PreferredBackBufferWidth = 1200;  // set this value to the desired width of your window
-            _graphics.PreferredBackBufferHeight = 600;   // set this value to the desired height of your window
-            _graphics.ApplyChanges();
+            
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            // set window size:
+            _graphics.PreferredBackBufferWidth = 1200;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferHeight = 600;   // set this value to the desired height of your window
+            _graphics.ApplyChanges();
+
+            // create objects
             player = new Player();
             road = new Road();
 
@@ -66,6 +70,14 @@ namespace RunnerGame
 
             _time = 1f;
 
+            // add all objects to the objects list
+            objects = new List<GameObject>();
+            objects.Add(player);
+            objects.Add(obstacle);
+            objects.Add(road);
+
+            
+
             base.Initialize();
         }
 
@@ -75,6 +87,7 @@ namespace RunnerGame
 
             // TODO: use this.Content to load your game content here
             player.SetTexture(Content.Load<Texture2D>("punk1"));
+            obstacle.SetTexture(Content.Load<Texture2D>("obstacle (1)"));
             road.SetTexture(Content.Load<Texture2D>("longRoad"));
             obstacleTexture = Content.Load<Texture2D>("obstacle (1)");
 
@@ -91,9 +104,12 @@ namespace RunnerGame
 
             // keep the player on the screen
             player.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
+
+            // keep obstacle on the screen
+            obstacle.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
             
             // make sure the player doesn't go through road
-            player.StayOnTopOf(road);
+            //player.StayOnTopOf(road);
             
             // update all the moving objects
             foreach (GameObject obj in movingObjects)
@@ -133,6 +149,13 @@ namespace RunnerGame
                 if (player.CheckIfTouching(o))
                     Exit();
             }
+
+            // update obstacle
+            obstacle.Update(gameTime);
+
+            // trying to get player hitting road to work:
+            if (player.CheckIfTouching(obstacle))
+                Exit();
 
             base.Update(gameTime);
         }
