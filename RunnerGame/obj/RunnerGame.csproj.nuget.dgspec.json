@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\john9\\OneDrive\\Desktop\\gitMerge\\RunnerGame\\RunnerGame.csproj": {}
+    "C:\\Users\\john9\\OneDrive\\Desktop\\MAIN\\RunnerGame\\RunnerGame.csproj": {}
   },
   "projects": {
-    "C:\\Users\\john9\\OneDrive\\Desktop\\gitMerge\\RunnerGame\\RunnerGame.csproj": {
+    "C:\\Users\\john9\\OneDrive\\Desktop\\MAIN\\RunnerGame\\RunnerGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\john9\\OneDrive\\Desktop\\gitMerge\\RunnerGame\\RunnerGame.csproj",
+        "projectUniqueName": "C:\\Users\\john9\\OneDrive\\Desktop\\MAIN\\RunnerGame\\RunnerGame.csproj",
         "projectName": "RunnerGame",
-        "projectPath": "C:\\Users\\john9\\OneDrive\\Desktop\\gitMerge\\RunnerGame\\RunnerGame.csproj",
+        "projectPath": "C:\\Users\\john9\\OneDrive\\Desktop\\MAIN\\RunnerGame\\RunnerGame.csproj",
         "packagesPath": "C:\\Users\\john9\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\john9\\OneDrive\\Desktop\\gitMerge\\RunnerGame\\obj\\",
+        "outputPath": "C:\\Users\\john9\\OneDrive\\Desktop\\MAIN\\RunnerGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\john9\\AppData\\Roaming\\NuGet\\NuGet.Config",
