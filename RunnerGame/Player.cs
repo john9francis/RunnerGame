@@ -18,6 +18,8 @@ public class Player : GameObject
     public override void Update(GameTime gameTime)
     {
         float gameTimeConstant = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+        // only apply gravity if the player is in the air jumping. 
         if (_hasJumped)
         {
             ApplyPhysics(gameTimeConstant);

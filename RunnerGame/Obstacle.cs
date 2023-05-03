@@ -8,7 +8,6 @@ using System.Linq.Expressions;
 
 public class Obstacle : GameObject
 {
-    //public Obstacle() { }
     public Obstacle(Vector2 position, float hitboxWidth, float hitboxHeight, Texture2D texture)
     {
         SetPosition(position);

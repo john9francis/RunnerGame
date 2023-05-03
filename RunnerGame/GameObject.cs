@@ -86,7 +86,6 @@ public abstract class GameObject
     public void Draw(SpriteBatch spriteBatch)
     {
         spriteBatch.Begin();
-        // draw everything in the objects list
 
         spriteBatch.Draw(
             GetTexture(),
@@ -120,7 +119,6 @@ public abstract class GameObject
         _position.Y += _speed * gameTimeConstant;
     }
 
-    // todo: create colission detection.
     public void KeepOnScreen(float backBufferWidth, float backBufferHeight)
     {
         // make sure the player doesn't go off the screen
