@@ -107,11 +107,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\john9\\OneDrive\\Desktop\\manual merge\\RunnerGame\\RunnerGame.csproj",
+      "projectUniqueName": "C:\\Users\\john9\\OneDrive\\Desktop\\CSE310\\RunnerGame\\RunnerGame\\RunnerGame.csproj",
       "projectName": "RunnerGame",
-      "projectPath": "C:\\Users\\john9\\OneDrive\\Desktop\\manual merge\\RunnerGame\\RunnerGame.csproj",
+      "projectPath": "C:\\Users\\john9\\OneDrive\\Desktop\\CSE310\\RunnerGame\\RunnerGame\\RunnerGame.csproj",
       "packagesPath": "C:\\Users\\john9\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\john9\\OneDrive\\Desktop\\manual merge\\RunnerGame\\obj\\",
+      "outputPath": "C:\\Users\\john9\\OneDrive\\Desktop\\CSE310\\RunnerGame\\RunnerGame\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\john9\\AppData\\Roaming\\NuGet\\NuGet.Config",

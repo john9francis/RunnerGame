@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pIwKFB2bXOAQTwprS4zLu129BOJUKGmGD2exNV/qCmGvBgxVZi4dqyGBIeoxdHAhShTv+o7ctzU5hfn5/B7h+Q==",
+  "dgSpecHash": "Mxa2bLYDblUyDJ9TcXHyq71tQCiYohnIOsUTQGtBngcpiOkmFOulWcD+Xxt6MCAm3XuRdyryACmrbgHTQPG07Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\john9\\OneDrive\\Desktop\\manual merge\\RunnerGame\\RunnerGame.csproj",
+  "projectFilePath": "C:\\Users\\john9\\OneDrive\\Desktop\\CSE310\\RunnerGame\\RunnerGame\\RunnerGame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\john9\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
     "C:\\Users\\john9\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
