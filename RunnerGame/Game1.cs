@@ -1,9 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-
-ausing Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -15,6 +10,7 @@ namespace RunnerGame
     public class Game1 : Game
     {
         // test commit
+        // did it merge correctly?
         Player player;
         Road road;
         //Obstacle obstacle;

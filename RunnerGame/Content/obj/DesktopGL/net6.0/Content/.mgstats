@@ -1,5 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/longRoad.png","C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/bin/DesktopGL/Content/longRoad.xnb","TextureProcessor","Texture2DContent",17868,4000085,0.4403878
-"C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/obstacle.png","C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/bin/DesktopGL/Content/obstacle.xnb","TextureProcessor","Texture2DContent",3789,230485,0.0084049
-"C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/punk1.png","C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/bin/DesktopGL/Content/punk1.xnb","TextureProcessor","Texture2DContent",2862,230485,0.009318
-"C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/road.png","C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/bin/DesktopGL/Content/road.xnb","TextureProcessor","Texture2DContent",1671,230485,0.012543
+"C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/longRoad.png","C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/bin/DesktopGL/Content/longRoad.xnb","TextureProcessor","Texture2DContent",17868,4000085,0.2806575
+"C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/obstacle.png","C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/bin/DesktopGL/Content/obstacle.xnb","TextureProcessor","Texture2DContent",3789,230485,0.0087068
+"C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/punk1.png","C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/bin/DesktopGL/Content/punk1.xnb","TextureProcessor","Texture2DContent",2862,230485,0.0084946
+"C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/road.png","C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/bin/DesktopGL/Content/road.xnb","TextureProcessor","Texture2DContent",1671,230485,0.0102041

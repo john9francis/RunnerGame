@@ -4,10 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/longRoad.png</File>
-    <File>C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/obstacle.png</File>
-    <File>C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/punk1.png</File>
-    <File>C:/Users/john9/OneDrive/Desktop/gitMerge/RunnerGame/Content/road.png</File>
+    <File>C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/longRoad.png</File>
+    <File>C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/obstacle.png</File>
+    <File>C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/punk1.png</File>
+    <File>C:/Users/john9/OneDrive/Desktop/manual merge/RunnerGame/Content/road.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
