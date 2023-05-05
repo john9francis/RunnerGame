@@ -261,4 +261,4 @@ __pycache__/
 *.pyc
 
 # sound files
-../.vs/RunnerGame/v17
+.vs/RunnerGame/v17
