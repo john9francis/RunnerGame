@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/bounce.mp3</File>
+    <File>C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/File.spritefont</File>
     <File>C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/longRoad.png</File>
     <File>C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/obstacle.png</File>
     <File>C:/Users/john9/OneDrive/Desktop/CSE310/RunnerGame/RunnerGame/Content/punk1.png</File>
@@ -12,6 +13,7 @@
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
+    <File>score.spritefont</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

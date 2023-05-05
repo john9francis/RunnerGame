@@ -28,6 +28,9 @@ namespace RunnerGame
         private int windowHeight = 600;
 
         private Song _bounceSound;
+
+        private SpriteFont _font;
+        private int _score = 0;
        
         // monogame stuff
         private GraphicsDeviceManager _graphics;
@@ -83,12 +86,16 @@ namespace RunnerGame
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            // Textures
             player.SetTexture(Content.Load<Texture2D>("punk1"));
             road.SetTexture(Content.Load<Texture2D>("longRoad"));
             obstacle1Texture = Content.Load<Texture2D>("obstacle (1)");
 
+            // sounds
             _bounceSound = Content.Load<Song>("bounce");
+
+            // words
+            _font = Content.Load<SpriteFont>("score");
         }
 
         protected override void Update(GameTime gameTime)
@@ -143,6 +150,17 @@ namespace RunnerGame
                 MediaPlayer.Play(_bounceSound);
             }
 
+            // if obstacles go off screen, earn a point.
+            for (int i=0; i<obstacles.Count; i++)
+            {
+                if (obstacles[i].GetPosition().X < 0)
+                {
+                    // delete the obstacle so it doesn't take up space
+                    obstacles.RemoveAt(i);
+                    _score++;
+                }
+            }
+
             base.Update(gameTime);
         }
 
@@ -160,6 +178,11 @@ namespace RunnerGame
             {
                 obj.Draw(_spriteBatch);
             }
+
+            // draw words
+            _spriteBatch.Begin();
+            _spriteBatch.DrawString(_font, "Score:" + _score, new Vector2(50, 50), Color.White);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
