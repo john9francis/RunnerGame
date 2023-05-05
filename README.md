@@ -17,6 +17,7 @@ I coded this project in C# and used the MonoGame framework. Monogame is a video 
 * [Getting started with MonoGame](https://docs.monogame.net/articles/getting_started/0_getting_started.html)
 * [Helpful monogame tutorial videos by Oyyou](https://www.youtube.com/@Oyyou)
 * [GitHub reposotory of Oyyou's tutorials](https://github.com/Oyyou/MonoGame_Tutorials)
+* [A little help with keyboard inputs](https://community.monogame.net/t/one-shot-key-press/11669)
 
 # Future Work
 
