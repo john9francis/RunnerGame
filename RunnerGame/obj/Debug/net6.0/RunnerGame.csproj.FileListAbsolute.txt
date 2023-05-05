@@ -118,3 +118,5 @@ C:\Users\john9\OneDrive\Desktop\manual merge\RunnerGame\obj\Debug\net6.0\refint\
 C:\Users\john9\OneDrive\Desktop\manual merge\RunnerGame\obj\Debug\net6.0\RunnerGame.pdb
 C:\Users\john9\OneDrive\Desktop\manual merge\RunnerGame\obj\Debug\net6.0\RunnerGame.genruntimeconfig.cache
 C:\Users\john9\OneDrive\Desktop\manual merge\RunnerGame\obj\Debug\net6.0\ref\RunnerGame.dll
+C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\bounce.ogg
+C:\Users\john9\OneDrive\Desktop\CSE310\RunnerGame\RunnerGame\bin\Debug\net6.0\Content\bounce.xnb

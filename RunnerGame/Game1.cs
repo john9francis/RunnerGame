@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -26,6 +27,7 @@ namespace RunnerGame
         private int windowWidth = 1200;
         private int windowHeight = 600;
 
+        private Song _bounceSound;
        
         // monogame stuff
         private GraphicsDeviceManager _graphics;
@@ -42,6 +44,7 @@ namespace RunnerGame
             _graphics.PreferredBackBufferWidth = windowWidth;
             _graphics.PreferredBackBufferHeight = windowHeight;
             _graphics.ApplyChanges();
+
         }
 
         protected override void Initialize()
@@ -85,7 +88,7 @@ namespace RunnerGame
             road.SetTexture(Content.Load<Texture2D>("longRoad"));
             obstacle1Texture = Content.Load<Texture2D>("obstacle (1)");
 
-
+            _bounceSound = Content.Load<Song>("bounce");
         }
 
         protected override void Update(GameTime gameTime)
@@ -131,6 +134,13 @@ namespace RunnerGame
             {
                 if (player.CheckIfTouching(o))
                     Exit();
+            }
+
+            // play bounce sound on jump
+            Keyboard1.CheckKey();
+            if (Keyboard1.ActivateOnce(Keys.Space))
+            {
+                MediaPlayer.Play(_bounceSound);
             }
 
             base.Update(gameTime);

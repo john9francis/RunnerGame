@@ -9,7 +9,9 @@ using System.Linq.Expressions;
 
 public class Player : GameObject
 {
-
+    public Keys _jumpKey = Keys.Space;
+    private Keys _leftKey = Keys.A;
+    private Keys _rightKey = Keys.D;
     public Player()
     {
 
@@ -28,15 +30,15 @@ public class Player : GameObject
         var kstate = Keyboard.GetState();
 
         // move the player when the user presses the keys
-        if (kstate.IsKeyDown(Keys.A))
+        if (kstate.IsKeyDown(_leftKey))
         {
             MoveLeft(gameTimeConstant);
         }
-        if (kstate.IsKeyDown(Keys.D))
+        if (kstate.IsKeyDown(_rightKey))
         {
             MoveRight(gameTimeConstant);
         }
-        if (kstate.IsKeyDown(Keys.Space))
+        if (kstate.IsKeyDown(_jumpKey))
         {
             Jump(gameTimeConstant);
         }
