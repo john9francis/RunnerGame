@@ -19,6 +19,7 @@ I coded this project in C# and used the MonoGame framework. Monogame is a video 
 * [GitHub reposotory of Oyyou's tutorials](https://github.com/Oyyou/MonoGame_Tutorials)
 * [Help adding sound to the game](https://gamefromscratch.com/monogame-tutorial-audio/)
 * [A little help with keyboard inputs](https://community.monogame.net/t/one-shot-key-press/11669)
+* [Really nice tutorial to display the score on the screen](http://rbwhitaker.wikidot.com/monogame-drawing-text-with-spritefonts)
 
 # Future Work
 
