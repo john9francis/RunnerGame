@@ -1,6 +1,6 @@
 # Overview
 
-This is my simple game "Punk Run." Dodge the obstacles by jumping with the spacebar and moving around with the left and right keys. 
+This is my simple game "Punk Run." Dodge the obstacles by jumping with the spacebar and moving around with the A and right D. 
 
 This is a simple runner game coded using the MonoGame framework. I created this game to demonstrate how MonoGame works for a simple video game.
 
