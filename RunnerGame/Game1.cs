@@ -155,7 +155,7 @@ namespace RunnerGame
             {
                 if (obstacles[i].GetPosition().X < 0)
                 {
-                    // delete the obstacle so it doesn't take up space
+                    // delete the obstacle so it doesn't take up space 
                     obstacles.RemoveAt(i);
                     _score++;
                 }
