@@ -1,8 +1,18 @@
 # Overview
 
-This is my simple game "Punk Run." Dodge the obstacles by jumping with the spacebar and moving around with the A and right D. 
+This is my game, "Punk Run." Dodge the obstacles by jumping with the spacebar and moving around with the A and right D. 
 
 This is a simple runner game coded using the MonoGame framework. I created this game to demonstrate how MonoGame works for a simple video game.
+
+This game demonstrates the following:
+
+* User input to move a player
+* Movement of non player objects
+* Simple colission detection
+* Display of text on the screen
+* Use of sound effects
+* Different game screens/ game states (Main menu, Gameplay, Game over)
+
 
 [Software Demo Video](http://youtube.link.goes.here)
 
@@ -24,7 +34,6 @@ I coded this project in C# and used the MonoGame framework. Monogame is a video 
 
 # Future Work
 
-{List of things I need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Add more exciting gameplay. Different obstacles, powerups, etc.
+* Add levels to progress
+* Add a way to save your highscore
