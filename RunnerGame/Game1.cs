@@ -31,7 +31,17 @@ namespace RunnerGame
 
         private SpriteFont _font;
         private int _score = 0;
-       
+
+        private enum GameState
+        {
+            MainMenu,
+            Gameplay,
+            EndOfGame,
+        }
+
+        // start our enum
+        GameState _state = GameState.MainMenu;
+
         // monogame stuff
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -47,6 +57,8 @@ namespace RunnerGame
             _graphics.PreferredBackBufferWidth = windowWidth;
             _graphics.PreferredBackBufferHeight = windowHeight;
             _graphics.ApplyChanges();
+
+            
 
         }
 
@@ -99,6 +111,21 @@ namespace RunnerGame
         }
 
         protected override void Update(GameTime gameTime)
+        {
+            switch (_state)
+            {
+                case GameState.MainMenu:
+                    UpdateMainMenu(gameTime); break;
+                case GameState.Gameplay:
+                    UpdateGamePlay(gameTime); break;
+                case GameState.EndOfGame:
+                    UpdateEndOfGame(gameTime); break;
+            }
+
+            base.Update(gameTime);
+        }
+
+        public void UpdateGamePlay(GameTime gameTime)
         {
             // exit if escape is pressed
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -161,10 +188,48 @@ namespace RunnerGame
                 }
             }
 
-            base.Update(gameTime);
+        }
+
+        public void UpdateMainMenu(GameTime gameTime)
+        {
+            var kstate = Keyboard.GetState();
+            if (kstate.IsKeyDown(Keys.Space))
+            {
+                _state = GameState.Gameplay;
+            }
+        }
+
+        public void UpdateEndOfGame(GameTime gameTime)
+        {
+
         }
 
         protected override void Draw(GameTime gameTime)
+        {
+            switch (_state)
+            {
+                case GameState.MainMenu:
+                    DrawMainMenu(gameTime); break;
+                case GameState.Gameplay:
+                    DrawGameplay(gameTime); break;
+                case GameState.EndOfGame:
+                    DrawEndOfGame(gameTime); break;
+            }
+            DrawGameplay(gameTime);
+            base.Draw(gameTime);
+        }
+
+        public void DrawMainMenu(GameTime gameTime)
+        {
+
+        }
+
+        public void DrawEndOfGame(GameTime gameTime)
+        {
+
+        }
+
+        public void DrawGameplay(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
