@@ -17,7 +17,7 @@ namespace RunnerGame
         List<Obstacle> obstacles;
 
         private float _time;
-        private int _count = 2;
+        private int _count;
         private Random random = new Random();
         private int randMin;
         private int randMax;
@@ -58,7 +58,8 @@ namespace RunnerGame
             _graphics.PreferredBackBufferHeight = windowHeight;
             _graphics.ApplyChanges();
 
-            
+            obstacles = new List<Obstacle>();
+
 
         }
 
@@ -82,7 +83,7 @@ namespace RunnerGame
 
             // lists of stuff
             objects = new List<GameObject> { player, road };
-            obstacles = new List<Obstacle>();
+            obstacles.Clear();
 
             // initialize time (used for obstacle generation)
             _time = 0f;
@@ -90,6 +91,7 @@ namespace RunnerGame
             // randoms initialized (used for obstacle gen)
             randMin = 100;
             randMax = 200;
+            _count = 2;
 
             base.Initialize();
         }
@@ -112,6 +114,10 @@ namespace RunnerGame
 
         protected override void Update(GameTime gameTime)
         {
+            // exit if escape is pressed
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
             switch (_state)
             {
                 case GameState.MainMenu:
@@ -127,9 +133,7 @@ namespace RunnerGame
 
         public void UpdateGamePlay(GameTime gameTime)
         {
-            // exit if escape is pressed
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            
 
             // TODO: Add your update logic here
 
@@ -167,7 +171,7 @@ namespace RunnerGame
             foreach (Obstacle o in obstacles)
             {
                 if (player.CheckIfTouching(o))
-                    Exit();
+                    _state = GameState.EndOfGame;
             }
 
             // play bounce sound on jump
@@ -201,11 +205,21 @@ namespace RunnerGame
 
         public void UpdateEndOfGame(GameTime gameTime)
         {
-
+            var kstate = Keyboard.GetState();
+            if (kstate.IsKeyDown(Keys.R))
+            {
+                // initialize everything again:
+                _score = 0;
+                Initialize();
+                _state = GameState.Gameplay;
+            }
         }
 
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+
             switch (_state)
             {
                 case GameState.MainMenu:
@@ -215,23 +229,35 @@ namespace RunnerGame
                 case GameState.EndOfGame:
                     DrawEndOfGame(gameTime); break;
             }
-            DrawGameplay(gameTime);
             base.Draw(gameTime);
         }
 
         public void DrawMainMenu(GameTime gameTime)
         {
-
+            // give some simple instructions
+            _spriteBatch.Begin();
+            _spriteBatch.DrawString(
+                _font,
+                "Welcome to Punk Run! (Press space to begin)",
+                new Vector2(_graphics.PreferredBackBufferWidth/2 - 300, _graphics.PreferredBackBufferHeight/2), 
+                Color.White);
+            _spriteBatch.End();
         }
 
         public void DrawEndOfGame(GameTime gameTime)
         {
-
+            // game over!
+            _spriteBatch.Begin();
+            _spriteBatch.DrawString(
+                _font,
+                "Game over! your score was: " + _score + ". Try again? (Press r to restart)",
+                new Vector2(_graphics.PreferredBackBufferWidth/2 - 300, _graphics.PreferredBackBufferHeight/2),
+                Color.White);
+            _spriteBatch.End();
         }
 
         public void DrawGameplay(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
 
