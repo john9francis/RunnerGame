@@ -1,6 +1,6 @@
 # Overview
 
-This is my simple game "Punk Run." Dodge the obstacles by jumping with the spacebar and moving around with the left and right keys. 
+This is my simple game "Punk Run." Dodge the obstacles by jumping with the spacebar and moving around with the A and right D. 
 
 This is a simple runner game coded using the MonoGame framework. I created this game to demonstrate how MonoGame works for a simple video game.
 
@@ -20,6 +20,7 @@ I coded this project in C# and used the MonoGame framework. Monogame is a video 
 * [Help adding sound to the game](https://gamefromscratch.com/monogame-tutorial-audio/)
 * [A little help with keyboard inputs](https://community.monogame.net/t/one-shot-key-press/11669)
 * [Really nice tutorial to display the score on the screen](http://rbwhitaker.wikidot.com/monogame-drawing-text-with-spritefonts)
+* [Help with different game states](https://community.monogame.net/t/switch-scenes-in-monogame/2605/2)
 
 # Future Work
 
