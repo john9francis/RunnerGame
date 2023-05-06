@@ -14,7 +14,7 @@ This game demonstrates the following:
 * Different game screens/ game states (Main menu, Gameplay, Game over)
 
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/x0VH3uojr1o)
 
 # Development Environment
 
