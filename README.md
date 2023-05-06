@@ -9,6 +9,7 @@ This game demonstrates the following:
 * User input to move a player
 * Movement of non player objects
 * Simple colission detection
+* Simple Physics (gravity, not falling through the floor)
 * Display of text on the screen
 * Use of sound effects
 * Different game screens/ game states (Main menu, Gameplay, Game over)
