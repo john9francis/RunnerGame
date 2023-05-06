@@ -28,6 +28,7 @@ namespace RunnerGame
         private int windowHeight = 600;
 
         private Song _bounceSound;
+        private Song _gameOverSound;
 
         private SpriteFont _font;
         private int _score = 0;
@@ -107,6 +108,7 @@ namespace RunnerGame
 
             // sounds
             _bounceSound = Content.Load<Song>("bounce");
+            _gameOverSound = Content.Load<Song>("gameover");
 
             // words
             _font = Content.Load<SpriteFont>("score");
@@ -131,12 +133,17 @@ namespace RunnerGame
             base.Update(gameTime);
         }
 
+        public void UpdateMainMenu(GameTime gameTime)
+        {
+            var kstate = Keyboard.GetState();
+            if (kstate.IsKeyDown(Keys.Enter))
+            {
+                _state = GameState.Gameplay;
+            }
+        }
+
         public void UpdateGamePlay(GameTime gameTime)
         {
-            
-
-            // TODO: Add your update logic here
-
             // keep the player on the screen
             player.KeepOnScreen(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
 
@@ -171,7 +178,11 @@ namespace RunnerGame
             foreach (Obstacle o in obstacles)
             {
                 if (player.CheckIfTouching(o))
+                {
+                    MediaPlayer.Play(_gameOverSound);
                     _state = GameState.EndOfGame;
+
+                }
             }
 
             // play bounce sound on jump
@@ -194,14 +205,7 @@ namespace RunnerGame
 
         }
 
-        public void UpdateMainMenu(GameTime gameTime)
-        {
-            var kstate = Keyboard.GetState();
-            if (kstate.IsKeyDown(Keys.Space))
-            {
-                _state = GameState.Gameplay;
-            }
-        }
+        
 
         public void UpdateEndOfGame(GameTime gameTime)
         {
@@ -235,26 +239,28 @@ namespace RunnerGame
         public void DrawMainMenu(GameTime gameTime)
         {
             // give some simple instructions
+            List<string> instructions = new List<string>();
+            instructions.Add("Welcome to Punk Run!");
+            instructions.Add("Move with \"A\" and \"D,\" and Jump with \"Space.\"");
+            instructions.Add("To quit, press Escape.");
+            instructions.Add("(Press Enter to begin.)");
+
+            int height = _graphics.PreferredBackBufferHeight / 2 - 100;
             _spriteBatch.Begin();
-            _spriteBatch.DrawString(
+            foreach (string instruction in instructions)
+            {
+                _spriteBatch.DrawString(
                 _font,
-                "Welcome to Punk Run! (Press space to begin)",
-                new Vector2(_graphics.PreferredBackBufferWidth/2 - 300, _graphics.PreferredBackBufferHeight/2), 
+                instruction,
+                new Vector2(_graphics.PreferredBackBufferWidth / 2 - 300, height),
                 Color.White);
+
+                height += 30;
+            }
             _spriteBatch.End();
         }
 
-        public void DrawEndOfGame(GameTime gameTime)
-        {
-            // game over!
-            _spriteBatch.Begin();
-            _spriteBatch.DrawString(
-                _font,
-                "Game over! your score was: " + _score + ". Try again? (Press r to restart)",
-                new Vector2(_graphics.PreferredBackBufferWidth/2 - 300, _graphics.PreferredBackBufferHeight/2),
-                Color.White);
-            _spriteBatch.End();
-        }
+        
 
         public void DrawGameplay(GameTime gameTime)
         {
@@ -276,6 +282,30 @@ namespace RunnerGame
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public void DrawEndOfGame(GameTime gameTime)
+        {
+            // game over!
+            List<string> instructions = new List<string>();
+            instructions.Add("Game Over!");
+            instructions.Add("your score was: " + _score + ".");
+            instructions.Add("(Remember, Move with \"A\" and \"D,\" and Jump with \"Space.\")");
+            instructions.Add("(Press R to restart, or Escape to quit.)");
+
+            int height = _graphics.PreferredBackBufferHeight / 2 - 100;
+            _spriteBatch.Begin();
+            foreach (string instruction in instructions)
+            {
+                _spriteBatch.DrawString(
+                _font,
+                instruction,
+                new Vector2(_graphics.PreferredBackBufferWidth / 2 - 300, height),
+                Color.White);
+
+                height += 30;
+            }
+            _spriteBatch.End();
         }
     }
 }
