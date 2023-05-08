@@ -16,6 +16,7 @@ This game demonstrates the following:
 
 
 [Software Demo Video](https://youtu.be/x0VH3uojr1o)
+[Game download on itch.io](https://john9francis.itch.io/punk-run)
 
 # Development Environment
 
